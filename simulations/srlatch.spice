@@ -1,0 +1,104 @@
+**.subckt srlatch S R Q QN CLK
+*.ipin S
+*.ipin R
+*.opin Q
+*.opin QN
+*.ipin CLK
+x5 S CLK SN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x1 R CLK RN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x2 RN Q QN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x3 SN QN Q VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+**** begin user architecture code
+
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8_lvt/sky130_fd_pr__nfet_01v8_lvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8/sky130_fd_pr__pfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_03v3_nvt/sky130_fd_pr__nfet_03v3_nvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_nfet_01v8/sky130_fd_pr__esd_nfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_lvt/sky130_fd_pr__pfet_01v8_lvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_hvt/sky130_fd_pr__pfet_01v8_hvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_pfet_g5v0d10v5/sky130_fd_pr__esd_pfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d10v5/sky130_fd_pr__pfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d10v5/sky130_fd_pr__nfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d16v0/sky130_fd_pr__nfet_g5v0d16v0__tt_discrete.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_nfet_g5v0d10v5/sky130_fd_pr__esd_nfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/nonfet.spice
+* Mismatch parameters
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8/sky130_fd_pr__pfet_01v8__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8_lvt/sky130_fd_pr__nfet_01v8_lvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_lvt/sky130_fd_pr__pfet_01v8_lvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_hvt/sky130_fd_pr__pfet_01v8_hvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d10v5/sky130_fd_pr__nfet_g5v0d10v5__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d10v5/sky130_fd_pr__pfet_g5v0d10v5__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_03v3_nvt/sky130_fd_pr__nfet_03v3_nvt__mismatch.corner.spice
+* Resistor~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/Capacitor
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/r+c/res_typical__cap_typical.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/r+c/res_typical__cap_typical__lin.spice
+* Special cells
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/specialized_cells.spice
+* All models
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/all.spice
+* Corner
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/rf.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/lvnand.sym # of pins=3
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/sky130_tests/lvnand.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/sky130_tests/lvnand.sch
+.subckt lvnand  A B Y  VCCPIN  VSSPIN   WidthN=1 LenN=0.15 WidthP=1 LenP=0.15
+*.ipin A
+*.ipin B
+*.opin Y
+XM1 Y B S VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM2 Y A VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM3 Y B VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM4 S A VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+.ends
+
+**** begin user architecture code
+
+* .option SCALE=1e-6
+.option method=gear seed=12
+.param L=0.15
+.param W=0.5
+
+vd d 0 0
+vg g 0 0
+.control
+dc vd 0 2 0.01 vg 0 2 0.2
+alterparam L=0.18
+alterparam W=1
+reset
+dc vd 0 2 0.01 vg 0 2 0.2
+alterparam L=0.3
+alterparam W=2
+reset
+dc vd 0 2 0.01 vg 0 2 0.2
+alterparam L=0.5
+alterparam W=3
+reset
+dc vd 0 2 0.01 vg 0 2 0.2
+
+.endc
+
+
+
+
+
+**** end user architecture code
+** flattened .save nodes
+.end

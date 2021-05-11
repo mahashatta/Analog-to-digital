@@ -1,0 +1,19 @@
+**.subckt NOR A clk B Q
+*.ipin A
+*.ipin clk
+*.ipin B
+*.opin Q
+x7 net1 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__inv_1
+x8 net2 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__inv_1
+x1 A clk net2 VGND VNB VPB VPWR net1 sky130_fd_sc_hd__nor3_1
+x2 net1 clk B VGND VNB VPB VPWR net2 sky130_fd_sc_hd__nor3_1
+x4 net5 Q VGND VNB VPB VPWR net4 sky130_fd_sc_hd__nand2_1
+x3 net4 net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nand2_1
+V4 VNB GND 0
+V5 VPWR GND 1.8
+V6 VPB GND 1.8
+V7 VGND GND 0
+**.ends
+.GLOBAL GND
+** flattened .save nodes
+.end

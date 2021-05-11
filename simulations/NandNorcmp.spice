@@ -1,0 +1,18 @@
+**.subckt NandNorcmp
+x1 A net3 net2 VGND VNB VPB VPWR net1 sky130_fd_sc_hd__nor3_1
+x2 net1 net3 B VGND VNB VPB VPWR net2 sky130_fd_sc_hd__nor3_1
+V4 VNB GND 0
+V5 VPWR GND 1.8
+V6 VPB GND 1.8
+V7 VGND GND 0
+x3 net5 clk B VGND VNB VPB VPWR net6 sky130_fd_sc_hd__nand3_1
+x4 A clk net6 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__nand3_1
+x5 net5 VGND VNB VPB VPWR net8 sky130_fd_sc_hd__inv_1
+x6 net6 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__inv_1
+x7 Q net8 net2 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__nor3_1
+x8 net7 net1 net4 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
+x9 clk VGND VNB VPB VPWR net3 sky130_fd_sc_hd__inv_1
+**.ends
+.GLOBAL GND
+** flattened .save nodes
+.end
