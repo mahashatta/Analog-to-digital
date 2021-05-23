@@ -1,19 +1,15 @@
 **.subckt cmpoaisch
-x1 A A clkb VDD net5 VDD VGND VNB VPB VPWR net5 sky130_fd_sc_hd__a222oi_1
-x2 B B clkb VDD net6 VDD VGND VNB VPB VPWR net6 sky130_fd_sc_hd__a222oi_1
-x4 net7 VSS VGND VNB VPB VPWR net1 sky130_fd_sc_hd__or2_1
-x7 net7 VSS VGND VNB VPB VPWR net2 sky130_fd_sc_hd__or2_1
-x11 net8 VGND VNB VPB VPWR net9 sky130_fd_sc_hd__inv_1
-x12 net7 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__inv_1
-x13 net4 net5 net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
-x14 Q net9 net6 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__nor3_1
 V7 VNB GND 0
 V8 VPWR GND 1.8
 V9 VPB GND 1.8
 V10 VGND GND 0
 x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
-x3 A A clk VSS net1 VGND VNB VPB VPWR net8 sky130_fd_sc_hd__o221ai_1
-x5 B B clk VSS net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__o221ai_1
+x7 A A clkb VPWR net2 VPWR VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a222oi_1
+x8 B B clkb VPWR net1 VPWR VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a222oi_1
+x10 net1 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__inv_1
+x11 net2 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__inv_1
+x12 net4 Q VGND VNB VPB VPWR Qd sky130_fd_sc_hd__nand2_1
+x13 Qd net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nand2_1
 **.ends
 .GLOBAL GND
 ** flattened .save nodes
