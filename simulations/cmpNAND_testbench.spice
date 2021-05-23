@@ -1,14 +1,12 @@
 **.subckt cmpNAND_testbench
-V3 B1 GND 1.515
-V4 A GND pulse 0.675 1.55 0 10u 0 0 10u
-V5 clk GND pulse 0 1.8 5n .1n .1n 40n 80n
-V1 B2 GND 1.395
-V2 B3 GND 1.275
-V6 B4 GND 1.155
-V7 B5 GND 1.035
-V8 B6 GND 0.915
-V9 B7 GND 0.795
-V10 B8 GND 0.675
+V3 B8 GND 1.3
+V1 B7 GND 1.2
+V2 B6 GND 1.1
+V6 B5 GND 1
+V7 B4 GND 0.9
+V8 B3 GND 0.8
+V9 B2 GND 0.7
+V10 B1 GND 0.6
 x1 A clk B1 Q1 nandcmp
 x2 A clk B2 Q2 nandcmp
 x3 A clk B3 Q3 nandcmp
@@ -17,6 +15,14 @@ x5 A clk B5 Q5 nandcmp
 x6 A clk B6 Q6 nandcmp
 x7 A clk B7 Q7 nandcmp
 x8 A clk B8 Q8 nandcmp
+V13 B10 GND 1.5
+V14 B9 GND 1.4
+x9 A clk B9 Q9 nandcmp
+x10 A clk B10 Q10 nandcmp
+V24 A GND pwl 0 0 12.5u 0 12.5u 0.55 22.5u 0.55 22.5u 0.65 32.5u 0.65 32.5u 0.75 42.5u 0.75 42.5u
++ 0.85 52.5u 0.85 52.5u 0.95 62.5u .95 62.5u 1.05 72.5u 1.05 72.5u 1.15 82.5u 1.15 82.5u 1.25 92.5u 1.25
++ 92.5u 1.35 102.5u 1.35 102.5u 1.45 112.5u 1.45 112.5u 1.55 122.5u 1.55 122.5u 1.65 132.5u 1.65
+V25 clk GND pulse 0 1.8 5n .1n .1n 1.225u 2.5u
 **** begin user architecture code
 
 .include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
@@ -89,8 +95,8 @@ V10 VGND GND 0
 vvcc vcc 0 1.8
 vvss vss 0 0
 .control
-tran 10n 10u
-plot A CLK+2 Q1+4 Q2+6 Q3+8 Q4+10 Q5+12 Q6+14 Q7+16 Q8+18
+tran 1u 140u
+plot A CLK+2 Q1+4 Q2+6 Q3+8 Q4+10 Q5+12 Q6+14 Q7+16 Q8+18 Q9+20 Q10+22
 .endc
 
 

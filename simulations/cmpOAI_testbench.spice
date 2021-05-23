@@ -1,14 +1,16 @@
 **.subckt cmpOAI_testbench
-V3 B1 GND 1.8
-V4 A GND pulse 0 1.8 0 10u 0 0 10u
-V5 clk GND pulse 0 1.8 5n .1n .1n 40n 80n
-V1 B2 GND 1.575
-V2 B3 GND 1.35
-V6 B4 GND 1.125
-V7 B5 GND 0.9
-V8 B6 GND 0.675
-V9 B7 GND 0.45
-V10 B8 GND 0.225
+V3 B8 GND 0.75
+V4 A GND pwl 0 0 12.5u 0 12.5u 0.1 12.5u 0.2 22.5u 0.2 22.5u 0.3 32.5u 0.3 32.5u 0.4 42.5u 0.4 42.5u
++ 0.5 52.5u 0.5 52.5u 0.6 62.5u 0.6 62.5u 0.7 72.5u 0.7 72.5u 0.8 82.5u 0.8 82.5u 0.9 92.5u 0.9 92.5u 1
++ 102.5u 1 102.5 1.2 112.5u 1.2 122.5u 1.35
+V5 clk GND pulse 0 1.8 5n .1n .1n 1u 2u
+V1 B7 GND 0.65
+V2 B6 GND 0.55
+V6 B5 GND 0.45
+V7 B4 GND 0.35
+V8 B3 GND 0.25
+V9 B2 GND 0.15
+V10 B1 GND 0.05
 V11 VDD GND 1.8
 x1 A B1 Q1 clk VDD GND cmpoaisch
 x2 A B2 Q2 clk VDD GND cmpoaisch
@@ -18,6 +20,10 @@ x5 A B5 Q5 clk VDD GND cmpoaisch
 x6 A B6 Q6 clk VDD GND cmpoaisch
 x7 A B7 Q7 clk VDD GND cmpoaisch
 x8 A B8 Q8 clk VDD GND cmpoaisch
+x9 A B9 Q9 clk VDD GND cmpoaisch
+x10 A B10 Q10 clk VDD GND cmpoaisch
+V12 B10 GND 1.35
+V13 B9 GND 1.15
 **** begin user architecture code
 
 .include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
@@ -74,21 +80,17 @@ x8 A B8 Q8 clk VDD GND cmpoaisch
 * sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoaisch.sym
 * sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoaisch.sch
 .subckt cmpoaisch  A B Q clk VDD VSS
-x1 A A clkb VDD net5 VDD VGND VNB VPB VPWR net5 sky130_fd_sc_hd__a222oi_1
-x2 B B clkb VDD net6 VDD VGND VNB VPB VPWR net6 sky130_fd_sc_hd__a222oi_1
-x4 net7 VSS VGND VNB VPB VPWR net1 sky130_fd_sc_hd__or2_1
-x7 net7 VSS VGND VNB VPB VPWR net2 sky130_fd_sc_hd__or2_1
-x11 net8 VGND VNB VPB VPWR net9 sky130_fd_sc_hd__inv_1
-x12 net7 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__inv_1
-x13 net4 net5 net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
-x14 Q net9 net6 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__nor3_1
 V7 VNB GND 0
 V8 VPWR GND 1.8
 V9 VPB GND 1.8
 V10 VGND GND 0
 x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
-x3 A A clk VSS net1 VGND VNB VPB VPWR net8 sky130_fd_sc_hd__o221ai_1
-x5 B B clk VSS net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__o221ai_1
+x7 A A clkb VPWR net2 VPWR VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a222oi_1
+x8 B B clkb VPWR net1 VPWR VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a222oi_1
+x10 net1 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__inv_1
+x11 net2 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__inv_1
+x12 net4 Q VGND VNB VPB VPWR Qd sky130_fd_sc_hd__nand2_1
+x13 Qd net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nand2_1
 .ends
 
 .GLOBAL GND
@@ -99,8 +101,8 @@ x5 B B clk VSS net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__o221ai_1
 vvcc vcc 0 1.8
 vvss vss 0 0
 .control
-tran 100n 10u
-plot A CLK+2 Q1+4 Q2+6 Q3+8 Q4+10 Q5+12 Q6+14 Q7+16 Q8+18
+tran 0.1u 115u
+plot A CLK+2 Q1+4 Q2+6 Q3+8 Q4+10 Q5+12 Q6+14 Q7+16 Q8+18 Q9+20 Q10+22
 .endc
 
 
