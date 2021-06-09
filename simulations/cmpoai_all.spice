@@ -1,0 +1,18 @@
+**.subckt cmpoai_all
+V7 VNB GND 0
+V8 VPWR GND 1.8
+V9 VPB GND 1.8
+V10 VGND GND 0
+x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
+x7 A A clkb VPWR net2 VPWR VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a222oi_1
+x8 B B clkb VPWR net1 VPWR VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a222oi_1
+x2 net3 VGND VNB VPB VPWR net6 sky130_fd_sc_hd__inv_1
+x3 net4 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__inv_1
+x6 A A clk GND net4 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__o221ai_1
+x9 B B clk GND net3 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__o221ai_1
+x1 net5 net1 net7 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
+x4 Q net6 net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__nor3_1
+**.ends
+.GLOBAL GND
+** flattened .save nodes
+.end

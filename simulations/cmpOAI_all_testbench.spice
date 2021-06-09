@@ -1,50 +1,47 @@
-**.subckt cmpOAI_testbench
-V3 B8 GND 0.425
-V4 A GND pwl 0 0 12.5u 0 12.5u 0.1 12.5u 0.025 22.5u 0.025 22.5u 0.075 32.5u 0.075 32.5u 0.125 42.5u
-+ 0.125 42.5u 0.175 52.5u 0.175 52.5u 0.225 62.5u 0.225 62.5u 0.275 72.5u 0.275 72.5u 0.325 82.5u 0.325
-+ 82.5u 0.375 92.5u 0.375 92.5u 0.425 102.5u 0.425 102.5u 0.475 112.5u 0.475 112.5u 0.525 122.5u 0.525
-+ 122.5u 0.575 132.5u 0.575 132.5u 0.625 142.5u 0.625 142.5u 0.675 152.5u 0.675 152.5u 0.725 162.5u 0.725
-+ 162.5u 0.775 172.5u 0.775 172.5u 0.825 182.5u 0.825 182.5u 0.875 192.5u 0.875 192.5u 0.925 202.5u 0.925
-+ 202.5u 0.975
+**.subckt cmpOAI_all_testbench
 V5 clk GND pulse 0 1.8 5n .1n .1n 1u 2u
-V1 B7 GND 0.375
-V2 B6 GND 0.325
-V6 B5 GND 0.275
-V7 B4 GND 0.225
-V8 B3 GND 0.175
-V9 B2 GND 0.125
-V10 B1 GND 0.075
 V11 VDD GND 1.8
-x1 A B1 Q1 clk VDD GND cmpoaisch
-x2 A B2 Q2 clk VDD GND cmpoaisch
-x3 A B3 Q3 clk VDD GND cmpoaisch
-x4 A B4 Q4 clk VDD GND cmpoaisch
-x5 A B5 Q5 clk VDD GND cmpoaisch
-x6 A B6 Q6 clk VDD GND cmpoaisch
-x7 A B7 Q7 clk VDD GND cmpoaisch
-x8 A B8 Q8 clk VDD GND cmpoaisch
-x9 A B9 Q9 clk VDD GND cmpoaisch
-x10 A B10 Q10 clk VDD GND cmpoaisch
-V12 B10 GND 0.525
-V13 B9 GND 0.475
-V14 B13 GND 0.675
-V15 B12 GND 0.625
-V16 B11 GND 0.575
-V17 B15 GND 0.775
-V18 B14 GND 0.725
-V19 B17 GND 0.875
-V20 B16 GND 0.825
-V21 B19 GND 0.975
-V22 B18 GND 0.925
-x11 A B11 Q11 clk VDD GND cmpoaisch
-x12 A B12 Q12 clk VDD GND cmpoaisch
-x13 A B13 Q13 clk VDD GND cmpoaisch
-x14 A B14 Q14 clk VDD GND cmpoaisch
-x15 A B15 Q15 clk VDD GND cmpoaisch
-x16 A B16 Q16 clk VDD GND cmpoaisch
-x17 A B17 Q17 clk VDD GND cmpoaisch
-x18 A B18 Q18 clk VDD GND cmpoaisch
-x19 A B19 Q19 clk VDD GND cmpoaisch
+x1 A B1 Q1 clk VDD GND cmpoai_all
+x2 A B2 Q2 clk VDD GND cmpoai_all
+x3 A B3 Q3 clk VDD GND cmpoai_all
+x4 A B4 Q4 clk VDD GND cmpoai_all
+x5 A B5 Q5 clk VDD GND cmpoai_all
+x6 A B6 Q6 clk VDD GND cmpoai_all
+x7 A B7 Q7 clk VDD GND cmpoai_all
+x8 A B8 Q8 clk VDD GND cmpoai_all
+x9 A B9 Q9 clk VDD GND cmpoai_all
+x10 A B10 Q10 clk VDD GND cmpoai_all
+x11 A B11 Q11 clk VDD GND cmpoai_all
+x12 A B12 Q12 clk VDD GND cmpoai_all
+V16 B8 GND 0.75
+V17 A GND pwl 0 0 12.5u 0 12.5u 0.1 22.5u 0.1 22.5u 0.2 32.5u 0.2 32.5u 0.3 42.5u 0.3 42.5u 0.4
++ 52.5u 0.4 52.5u 0.5 62.5u 0.5 62.5u 0.6 72.5u 0.6 72.5u 0.7 82.5u 0.7 82.5u 0.8 92.5u 0.8 92.5u 0.9
++ 102.5u 0.9 102.5u 1 112.5u 1 112.5u 1.1 122.5u 1.1 122.5u 1.2 132.5u 1.2 132.5u 1.3 142.5u 1.3 142.5u 1.4
++ 152.5u 1.4 152.5u 1.5 162.5u 1.5 162.5u 1.6 172.5u 1.6 172.5u 1.7 182.5u 1.7 182.5u 1.8 192.5u 1.8 192.5u
++ 1.9
+V19 B7 GND 0.65
+V20 B6 GND 0.55
+V21 B5 GND 0.45
+V22 B4 GND 0.35
+V23 B3 GND 0.25
+V24 B2 GND 0.15
+V25 B1 GND 0.05
+V27 B10 GND 0.95
+V28 B9 GND 0.85
+V29 B13 GND 1.25
+V30 B12 GND 1.15
+V31 B11 GND 1.05
+V32 B15 GND 1.45
+V33 B14 GND 1.35
+V34 B17 GND 1.65
+V35 B16 GND 1.55
+V37 B18 GND 1.75
+x13 A B13 Q13 clk VDD GND cmpoai_all
+x14 A B14 Q14 clk VDD GND cmpoai_all
+x15 A B15 Q15 clk VDD GND cmpoai_all
+x16 A B16 Q16 clk VDD GND cmpoai_all
+x17 A B17 Q17 clk VDD GND cmpoai_all
+x18 A B18 Q18 clk VDD GND cmpoai_all
 **** begin user architecture code
 
 .include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
@@ -97,10 +94,10 @@ x19 A B19 Q19 clk VDD GND cmpoaisch
 **** end user architecture code
 **.ends
 
-* expanding   symbol:  cmpoaisch.sym # of pins=6
-* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoaisch.sym
-* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoaisch.sch
-.subckt cmpoaisch  A B Q clk VDD VSS
+* expanding   symbol:  cmpoai_all.sym # of pins=6
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all.sch
+.subckt cmpoai_all  A B Q clk VDD VSS
 V7 VNB GND 0
 V8 VPWR GND 1.8
 V9 VPB GND 1.8
@@ -108,10 +105,12 @@ V10 VGND GND 0
 x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
 x7 A A clkb VPWR net2 VPWR VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a222oi_1
 x8 B B clkb VPWR net1 VPWR VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a222oi_1
-x10 net1 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__inv_1
-x11 net2 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__inv_1
-x12 net4 Q VGND VNB VPB VPWR Qd sky130_fd_sc_hd__nand2_1
-x13 Qd net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nand2_1
+x2 net3 VGND VNB VPB VPWR net6 sky130_fd_sc_hd__inv_1
+x3 net4 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__inv_1
+x6 A A clk GND net4 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__o221ai_1
+x9 B B clk GND net3 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__o221ai_1
+x1 net5 net1 net7 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
+x4 Q net6 net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__nor3_1
 .ends
 
 .GLOBAL GND
@@ -122,9 +121,9 @@ x13 Qd net3 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nand2_1
 vvcc vcc 0 1.8
 vvss vss 0 0
 .control
-tran 0.1u 210u
+tran 0.1u 200u
 plot A CLK+2 Q1+4 Q2+6 Q3+8 Q4+10 Q5+12 Q6+14 Q7+16 Q8+18 Q9+20 Q10+22 Q11+24 Q12+26 Q13+28 Q14+30
-+ Q15+32 Q16+34 Q17+36 Q18+38 Q19+40
++ Q15+32 Q16+34 Q17+36 Q18+38
 .endc
 
 
