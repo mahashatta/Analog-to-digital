@@ -1,0 +1,355 @@
+**.subckt ADC-8bit
+x2 Vin dac cmp clkn Vdd GND cmpoai_all
+V8 Vdd GND 1.8
+V1 In1 GND 1.8
+V2 In2 GND 0
+V3 Vin GND 0.12
+V5 clk GND pulse 0 1.8 2u .1n .1n 2u 4u
+x1 Vdd dac net4 net3 net2 net1 In2 net5 net6 net7 net8 In1 DAC_8bit
+V6 VPB GND 1.8
+V7 VPWR GND 1.8
+V9 VNB GND 0
+V10 VGND GND 0
+V4 start GND 1.8
+V11 rstn GND pulse 0 1.8 8u .1n .1n 40u 80u
+x3 VPWR net5 clk rstn cmp start net6 net4 net3 net2 out.1 out.2 out.0 net8 net7 out.6 out.7 out.5
++ out.4 out.3 done net1 VGND VPB VNB clkn SAR-8bit
+**** begin user architecture code
+
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8_lvt/sky130_fd_pr__nfet_01v8_lvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8/sky130_fd_pr__pfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_03v3_nvt/sky130_fd_pr__nfet_03v3_nvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_nfet_01v8/sky130_fd_pr__esd_nfet_01v8__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_lvt/sky130_fd_pr__pfet_01v8_lvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_hvt/sky130_fd_pr__pfet_01v8_hvt__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_pfet_g5v0d10v5/sky130_fd_pr__esd_pfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d10v5/sky130_fd_pr__pfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d10v5/sky130_fd_pr__nfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d16v0/sky130_fd_pr__nfet_g5v0d16v0__tt_discrete.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/esd_nfet_g5v0d10v5/sky130_fd_pr__esd_nfet_g5v0d10v5__tt.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/nonfet.spice
+* Mismatch parameters
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8/sky130_fd_pr__pfet_01v8__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8_lvt/sky130_fd_pr__nfet_01v8_lvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_lvt/sky130_fd_pr__pfet_01v8_lvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_01v8_hvt/sky130_fd_pr__pfet_01v8_hvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_g5v0d10v5/sky130_fd_pr__nfet_g5v0d10v5__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/pfet_g5v0d10v5/sky130_fd_pr__pfet_g5v0d10v5__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__mismatch.corner.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_03v3_nvt/sky130_fd_pr__nfet_03v3_nvt__mismatch.corner.spice
+* Resistor~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/Capacitor
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/r+c/res_typical__cap_typical.spice
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/r+c/res_typical__cap_typical__lin.spice
+* Special cells
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/specialized_cells.spice
+* All models
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/all.spice
+* Corner
+.include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/tt/rf.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand3/sky130_fd_sc_hd__nand3_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand3/sky130_fd_sc_hd__nand3_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand4/sky130_fd_sc_hd__nand4_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand2/sky130_fd_sc_hd__nand2_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand2/sky130_fd_sc_hd__nand2_4.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand2b/sky130_fd_sc_hd__nand2b_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nand3b/sky130_fd_sc_hd__nand3b_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/buf/sky130_fd_sc_hd__buf_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dfrtp/sky130_fd_sc_hd__dfrtp_4.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dfstp/sky130_fd_sc_hd__dfstp_4.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dfxtp/sky130_fd_sc_hd__dfxtp_4.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nor3/sky130_fd_sc_hd__nor3_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nor3/sky130_fd_sc_hd__nor3_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dfrtp/sky130_fd_sc_hd__dfrtp_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nor2/sky130_fd_sc_hd__nor2_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nor2/sky130_fd_sc_hd__nor2_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/nor2b/sky130_fd_sc_hd__nor2b_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dlrbn/sky130_fd_sc_hd__dlrbn_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/a31o/sky130_fd_sc_hd__a31o_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/inv/sky130_fd_sc_hd__inv_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/inv/sky130_fd_sc_hd__inv_2.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/a222oi/sky130_fd_sc_hd__a222oi_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/or2/sky130_fd_sc_hd__or2_1.spice
+.include ~/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/o221ai/sky130_fd_sc_hd__o221ai_1.spice
+
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  cmpoai_all.sym # of pins=6
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all.sch
+.subckt cmpoai_all  A B Q clk VDD VSS
+V7 VNB GND 0
+V8 VPWR GND 1.8
+V9 VPB GND 1.8
+V10 VGND GND 0
+x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
+x7 A A clkb VPWR net2 VPWR VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a222oi_1
+x8 B B clkb VPWR net1 VPWR VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a222oi_1
+x2 net3 VGND VNB VPB VPWR net6 sky130_fd_sc_hd__inv_1
+x3 net4 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__inv_1
+x6 A A clk GND net4 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__o221ai_1
+x9 B B clk GND net3 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__o221ai_1
+x1 net5 net1 net7 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
+x4 Q net6 net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__nor3_1
+.ends
+
+
+* expanding   symbol:  DAC_8bit.sym # of pins=12
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_8bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_8bit.sch
+.subckt DAC_8bit  Vdd Out D3 D2 D1 D0 In2 D4 D5 D6 D7 In1
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net1 net2 Vdd D7 TG
+x1 Vdd net1 D3 D2 D1 D0 vref1 D4 D5 D6 In1 DAC_7bit
+x2 Vdd net2 D3 D2 D1 D0 In2 D4 D5 D6 vref1 DAC_7bit
+.ends
+
+
+* expanding   symbol:  SAR-8bit.sym # of pins=26
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/SAR-8bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/SAR-8bit.sch
+.subckt SAR-8bit VPWR outn.4 clk rstn cmp start outn.5 outn.3 outn.2 outn.1 out.1 out.2 out.0 outn.7 outn.6 out.6 out.7 out.5 out.4 out.3 done outn.0 VGND VPB VNB clkn
+
+X0 clk _018_ rstn VGND VNB VPB VPWR state_2_ sky130_fd_sc_hd__dfrtp_4
+X1 clk _016_ rstn VGND VNB VPB VPWR done sky130_fd_sc_hd__dfrtp_4
+X2 clk _017_ rstn VGND VNB VPB VPWR state_0_ sky130_fd_sc_hd__dfstp_4
+X3 clk _015_ VGND VNB VPB VPWR next_6_ sky130_fd_sc_hd__dfxtp_4
+X4 clk _014_ VGND VNB VPB VPWR next_5_ sky130_fd_sc_hd__dfxtp_4
+X5 clk _013_ VGND VNB VPB VPWR next_4_ sky130_fd_sc_hd__dfxtp_4
+X6 clk _012_ VGND VNB VPB VPWR next_3_ sky130_fd_sc_hd__dfxtp_4
+X7 clk _011_ VGND VNB VPB VPWR next_2_ sky130_fd_sc_hd__dfxtp_4
+X8 clk _010_ VGND VNB VPB VPWR next_1_ sky130_fd_sc_hd__dfxtp_4
+X9 clk _009_ VGND VNB VPB VPWR next_0_ sky130_fd_sc_hd__dfxtp_4
+X10 clk _008_ VGND VNB VPB VPWR shift_0_ sky130_fd_sc_hd__dfxtp_4
+X11 clk _007_ VGND VNB VPB VPWR out.7 sky130_fd_sc_hd__dfxtp_4
+X12 clk _006_ VGND VNB VPB VPWR out.6 sky130_fd_sc_hd__dfxtp_4
+X13 clk _005_ VGND VNB VPB VPWR out.5 sky130_fd_sc_hd__dfxtp_4
+X14 clk _004_ VGND VNB VPB VPWR out.4 sky130_fd_sc_hd__dfxtp_4
+X15 clk _003_ VGND VNB VPB VPWR out.3 sky130_fd_sc_hd__dfxtp_4
+X16 clk _002_ VGND VNB VPB VPWR out.2 sky130_fd_sc_hd__dfxtp_4
+X17 clk _001_ VGND VNB VPB VPWR out.1 sky130_fd_sc_hd__dfxtp_4
+X18 clk _000_ VGND VNB VPB VPWR out.0 sky130_fd_sc_hd__dfxtp_4
+X19 _050_ _052_ VGND VNB VPB VPWR _016_ sky130_fd_sc_hd__nor2b_2
+X20 clk VGND VNB VPB VPWR clkn sky130_fd_sc_hd__inv_2
+X21 _056_ _045_ VGND VNB VPB VPWR _015_ sky130_fd_sc_hd__nand2b_2
+X22 _052_ next_6_ VGND VNB VPB VPWR _045_ sky130_fd_sc_hd__nand2b_2
+X23 _029_ _044_ VGND VNB VPB VPWR _014_ sky130_fd_sc_hd__nor2_2
+X24 _043_ _024_ VGND VNB VPB VPWR _044_ sky130_fd_sc_hd__nor2b_2
+X25 _034_ next_5_ VGND VNB VPB VPWR _043_ sky130_fd_sc_hd__nor2b_2
+X26 _029_ _042_ VGND VNB VPB VPWR _013_ sky130_fd_sc_hd__nor2_2
+X27 _041_ _020_ VGND VNB VPB VPWR _042_ sky130_fd_sc_hd__nor2b_2
+X28 _034_ next_4_ VGND VNB VPB VPWR _041_ sky130_fd_sc_hd__nor2b_2
+X29 _029_ _040_ VGND VNB VPB VPWR _012_ sky130_fd_sc_hd__nor2_2
+X30 _039_ _079_ VGND VNB VPB VPWR _040_ sky130_fd_sc_hd__nor2b_2
+X31 _034_ next_3_ VGND VNB VPB VPWR _039_ sky130_fd_sc_hd__nor2b_2
+X32 _029_ _038_ VGND VNB VPB VPWR _011_ sky130_fd_sc_hd__nor2_2
+X33 _037_ _075_ VGND VNB VPB VPWR _038_ sky130_fd_sc_hd__nor2b_2
+X34 _034_ next_2_ VGND VNB VPB VPWR _037_ sky130_fd_sc_hd__nor2b_2
+X35 _056_ _036_ VGND VNB VPB VPWR _010_ sky130_fd_sc_hd__nor2_2
+X36 _035_ _071_ VGND VNB VPB VPWR _036_ sky130_fd_sc_hd__nor2b_2
+X37 _034_ next_1_ VGND VNB VPB VPWR _035_ sky130_fd_sc_hd__nor2b_2
+X38 _051_ VGND VNB VPB VPWR _034_ sky130_fd_sc_hd__buf_2
+X39 _056_ _033_ VGND VNB VPB VPWR _009_ sky130_fd_sc_hd__nor2_2
+X40 _032_ _066_ VGND VNB VPB VPWR _033_ sky130_fd_sc_hd__nor2b_2
+X41 _070_ next_0_ VGND VNB VPB VPWR _032_ sky130_fd_sc_hd__nor2b_2
+X42 _029_ _031_ VGND VNB VPB VPWR _008_ sky130_fd_sc_hd__nor2_2
+X43 _030_ _058_ VGND VNB VPB VPWR _031_ sky130_fd_sc_hd__nor2b_2
+X44 _052_ shift_0_ VGND VNB VPB VPWR _030_ sky130_fd_sc_hd__nor2b_2
+X45 state_0_ VGND VNB VPB VPWR _029_ sky130_fd_sc_hd__buf_2
+X46 _056_ _028_ VGND VNB VPB VPWR _007_ sky130_fd_sc_hd__nand2b_2
+X47 outn.7 _027_ VGND VNB VPB VPWR _028_ sky130_fd_sc_hd__nand2b_2
+X48 _024_ _060_ VGND VNB VPB VPWR _027_ sky130_fd_sc_hd__nand2b_2
+X49 out.7 VGND VNB VPB VPWR outn.7 sky130_fd_sc_hd__inv_2
+X50 _026_ VGND VNB VPB VPWR _006_ sky130_fd_sc_hd__inv_2
+X51 _023_ _025_ _054_ VGND VNB VPB VPWR _026_ sky130_fd_sc_hd__nand3b_2
+X52 out.6 _024_ VGND VNB VPB VPWR _025_ sky130_fd_sc_hd__nand2b_2
+X53 next_6_ _051_ VGND VNB VPB VPWR _024_ sky130_fd_sc_hd__nand2_4
+X54 cmp _020_ VGND VNB VPB VPWR _023_ sky130_fd_sc_hd__nor2_2
+X55 out.6 VGND VNB VPB VPWR outn.6 sky130_fd_sc_hd__inv_2
+X56 _022_ VGND VNB VPB VPWR _005_ sky130_fd_sc_hd__inv_2
+X57 _019_ _021_ _062_ VGND VNB VPB VPWR _022_ sky130_fd_sc_hd__nand3b_2
+X58 out.5 _020_ VGND VNB VPB VPWR _021_ sky130_fd_sc_hd__nand2b_2
+X59 next_5_ _070_ VGND VNB VPB VPWR _020_ sky130_fd_sc_hd__nand2_4
+X60 _064_ _079_ VGND VNB VPB VPWR _019_ sky130_fd_sc_hd__nor2_2
+X61 out.5 VGND VNB VPB VPWR outn.5 sky130_fd_sc_hd__inv_2
+X62 _081_ VGND VNB VPB VPWR _004_ sky130_fd_sc_hd__inv_2
+X63 _078_ _080_ _054_ VGND VNB VPB VPWR _081_ sky130_fd_sc_hd__nand3b_2
+X64 out.4 _079_ VGND VNB VPB VPWR _080_ sky130_fd_sc_hd__nand2b_2
+X65 next_4_ _070_ VGND VNB VPB VPWR _079_ sky130_fd_sc_hd__nand2_4
+X66 _064_ _075_ VGND VNB VPB VPWR _078_ sky130_fd_sc_hd__nor2_2
+X67 out.4 VGND VNB VPB VPWR outn.4 sky130_fd_sc_hd__inv_2
+X68 _077_ VGND VNB VPB VPWR _003_ sky130_fd_sc_hd__inv_2
+X69 _074_ _076_ _062_ VGND VNB VPB VPWR _077_ sky130_fd_sc_hd__nand3b_2
+X70 out.3 _075_ VGND VNB VPB VPWR _076_ sky130_fd_sc_hd__nand2b_2
+X71 next_3_ _070_ VGND VNB VPB VPWR _075_ sky130_fd_sc_hd__nand2_4
+X72 _064_ _071_ VGND VNB VPB VPWR _074_ sky130_fd_sc_hd__nor2_2
+X73 out.3 VGND VNB VPB VPWR outn.3 sky130_fd_sc_hd__inv_2
+X74 _073_ VGND VNB VPB VPWR _002_ sky130_fd_sc_hd__inv_2
+X75 _069_ _072_ _062_ VGND VNB VPB VPWR _073_ sky130_fd_sc_hd__nand3b_2
+X76 out.2 _071_ VGND VNB VPB VPWR _072_ sky130_fd_sc_hd__nand2b_2
+X77 next_2_ _070_ VGND VNB VPB VPWR _071_ sky130_fd_sc_hd__nand2_4
+X78 state_2_ VGND VNB VPB VPWR _070_ sky130_fd_sc_hd__buf_2
+X79 _064_ _066_ VGND VNB VPB VPWR _069_ sky130_fd_sc_hd__nor2_2
+X80 out.2 VGND VNB VPB VPWR outn.2 sky130_fd_sc_hd__inv_2
+X81 _068_ VGND VNB VPB VPWR _001_ sky130_fd_sc_hd__inv_2
+X82 _065_ _067_ _062_ VGND VNB VPB VPWR _068_ sky130_fd_sc_hd__nand3b_2
+X83 out.1 _066_ VGND VNB VPB VPWR _067_ sky130_fd_sc_hd__nand2b_2
+X84 next_1_ _051_ VGND VNB VPB VPWR _066_ sky130_fd_sc_hd__nand2_4
+X85 _064_ _058_ VGND VNB VPB VPWR _065_ sky130_fd_sc_hd__nor2_2
+X86 cmp VGND VNB VPB VPWR _064_ sky130_fd_sc_hd__buf_2
+X87 out.1 VGND VNB VPB VPWR outn.1 sky130_fd_sc_hd__inv_2
+X88 _063_ VGND VNB VPB VPWR _000_ sky130_fd_sc_hd__inv_2
+X89 _059_ _061_ _062_ VGND VNB VPB VPWR _063_ sky130_fd_sc_hd__nand3_2
+X90 _054_ VGND VNB VPB VPWR _062_ sky130_fd_sc_hd__buf_2
+X91 _060_ shift_0_ _052_ VGND VNB VPB VPWR _061_ sky130_fd_sc_hd__nand3_2
+X92 cmp VGND VNB VPB VPWR _060_ sky130_fd_sc_hd__inv_2
+X93 out.0 _058_ VGND VNB VPB VPWR _059_ sky130_fd_sc_hd__nand2b_2
+X94 next_0_ _051_ VGND VNB VPB VPWR _058_ sky130_fd_sc_hd__nand2_4
+X95 out.0 VGND VNB VPB VPWR outn.0 sky130_fd_sc_hd__inv_2
+X96 done _057_ VGND VNB VPB VPWR _017_ sky130_fd_sc_hd__nand2b_2
+X97 start _056_ VGND VNB VPB VPWR _057_ sky130_fd_sc_hd__nand2b_2
+X98 state_0_ VGND VNB VPB VPWR _056_ sky130_fd_sc_hd__buf_2
+X99 _053_ _055_ VGND VNB VPB VPWR _018_ sky130_fd_sc_hd__nand2_4
+X100 _054_ start VGND VNB VPB VPWR _055_ sky130_fd_sc_hd__nand2b_2
+X101 state_0_ VGND VNB VPB VPWR _054_ sky130_fd_sc_hd__inv_2
+X102 _050_ _052_ VGND VNB VPB VPWR _053_ sky130_fd_sc_hd__nand2_4
+X103 _051_ VGND VNB VPB VPWR _052_ sky130_fd_sc_hd__buf_2
+X104 state_2_ VGND VNB VPB VPWR _051_ sky130_fd_sc_hd__buf_2
+X105 _046_ _047_ _048_ _049_ VGND VNB VPB VPWR _050_ sky130_fd_sc_hd__nand4_2
+X106 next_4_ next_3_ VGND VNB VPB VPWR _049_ sky130_fd_sc_hd__nor2_2
+X107 next_6_ next_5_ VGND VNB VPB VPWR _048_ sky130_fd_sc_hd__nor2_2
+X108 next_2_ next_1_ VGND VNB VPB VPWR _047_ sky130_fd_sc_hd__nor2_2
+X109 next_0_ shift_0_ VGND VNB VPB VPWR _046_ sky130_fd_sc_hd__nor2b_2
+.ENDS 
+************************
+* end of SPICE netlist *
+************************
+* expanding   symbol:  TG.sym # of pins=5
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/TG.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/TG.sch
+.subckt TG  Out In1 In2 Vdd D
+XM1 Dinv D GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM2 Dinv D Vdd Vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM3 net1 Dinv GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM4 net1 Dinv Vdd Vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM5 Out net1 In2 In2 sky130_fd_pr__nfet_01v8 L=0.15 W=0.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM6 Out net1 In1 In1 sky130_fd_pr__pfet_01v8 L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM7 In2 Dinv Out Out sky130_fd_pr__pfet_01v8 L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM8 In1 Dinv Out Out sky130_fd_pr__nfet_01v8 L=0.15 W=0.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+.ends
+
+
+* expanding   symbol:  DAC_7bit.sym # of pins=11
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_7bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_7bit.sch
+.subckt DAC_7bit  Vdd Out D3 D2 D1 D0 In2 D4 D5 D6 In1
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net1 net2 Vdd D6 TG
+x1 Vdd net1 D3 D2 D1 D0 vref1 D4 D5 In1 DAC_6bit
+x2 Vdd net2 D3 D2 D1 D0 In2 D4 D5 vref1 DAC_6bit
+.ends
+
+
+* expanding   symbol:  DAC_6bit.sym # of pins=10
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_6bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_6bit.sch
+.subckt DAC_6bit  Vdd Out D3 D2 D1 D0 In2 D4 D5 In1
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net1 net2 Vdd D5 TG
+x1 Vdd net1 D3 D2 D1 D0 vref1 D4 In1 DAC_5bit
+x2 Vdd net2 D3 D2 D1 D0 In2 D4 vref1 DAC_5bit
+.ends
+
+
+* expanding   symbol:  DAC_5bit.sym # of pins=9
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_5bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_5bit.sch
+.subckt DAC_5bit  Vdd Out D3 D2 D1 D0 In2 D4 In1
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net1 net2 Vdd D4 TG
+x1 Vdd net1 D3 D2 D1 D0 vref1 In1 DAC_4bit
+x2 Vdd net2 D3 D2 D1 D0 In2 vref1 DAC_4bit
+.ends
+
+
+* expanding   symbol:  DAC_4bit.sym # of pins=8
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_4bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_4bit.sch
+.subckt DAC_4bit  Vdd Out D3 D2 D1 D0 In2 In1
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net2 net1 Vdd D3 TG
+x1 Vdd net2 In1 D2 D1 D0 vref1 DAC_3bit
+x2 Vdd net1 vref1 D2 D1 D0 In2 DAC_3bit
+.ends
+
+
+* expanding   symbol:  DAC_3bit.sym # of pins=7
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_3bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_3bit.sch
+.subckt DAC_3bit  Vdd Out In1 D2 D1 D0 In2
+x1 Vdd net2 In1 D1 D0 vref1 DAC_2bit
+x2 Vdd net1 vref1 D1 D0 In2 DAC_2bit
+R8 In1 vref1 250 m=1
+R6 vref1 In2 250 m=1
+x3 out net2 net1 Vdd D2 TG
+.ends
+
+
+* expanding   symbol:  DAC_2bit.sym # of pins=6
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_2bit.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/DAC_2bit.sch
+.subckt DAC_2bit  Vdd Out In1 D1 D0 In2
+x1 net1 net3 net4 Vdd D0 TG
+x2 net2 net5 In2 Vdd D0 TG
+x3 out net1 net2 Vdd D1 TG
+R1 In1 net3 500 m=1
+R2 net3 net4 500 m=1
+R3 net4 net5 500 m=1
+R4 net5 In2 500 m=1
+.ends
+
+.GLOBAL GND
+**** begin user architecture code
+
+
+.temp 25
+vvcc vcc 0 1.8
+vvss vss 0 0
+.control
+tran 0.25u 45u
+plot dac vin out.7+2 out.6+4 out.5+6 out.4+8 out.3+10 out.2+12 out.1+14 out.0+16 done+18 clk+20
++ clkn+22 rstn+24 cmp+28
+meas tran x find v(dac) when v(done)=1.8
+.endc
+
+
+**** end user architecture code
+** flattened .save nodes
+.end
