@@ -1,4 +1,4 @@
-**.subckt cmpOAI_all_testbench
+**.subckt cmpOAI_all_testbench_
 V5 clk GND pulse 0 1.8 2u .1n .1n 2u 4u
 V11 VDD GND 1.8
 V16 B8 GND 0.7
@@ -18,24 +18,6 @@ V30 B12 GND 1.1
 V31 B11 GND 1.0
 V1 B14 GND 1.3
 V2 B13 GND 1.2
-x1 A1 B1 Q1 clk VDD GND VDD GND cmpoai_all_
-x2 A2 B2 Q2 clk VDD GND VDD GND cmpoai_all_
-x3 A3 B3 Q3 clk VDD GND VDD GND cmpoai_all_
-x4 A4 B4 Q4 clk VDD GND VDD GND cmpoai_all_
-x5 A5 B5 Q5 clk VDD GND VDD GND cmpoai_all_
-x6 A6 B6 Q6 clk VDD GND VDD GND cmpoai_all_
-x7 A7 B7 Q7 clk VDD GND VDD GND cmpoai_all_
-x8 A8 B8 Q8 clk VDD GND VDD GND cmpoai_all_
-x9 A9 B9 Q9 clk VDD GND VDD GND cmpoai_all_
-x10 A10 B10 Q10 clk VDD GND VDD GND cmpoai_all_
-x11 A11 B11 Q11 clk VDD GND VDD GND cmpoai_all_
-x12 A12 B12 Q12 clk VDD GND VDD GND cmpoai_all_
-x13 A14 B14 Q14 clk VDD GND VDD GND cmpoai_all_
-x14 A13 B13 Q13 clk VDD GND VDD GND cmpoai_all_
-x15 A16 B16 Q16 clk VDD GND VDD GND cmpoai_all_
-x16 A15 B15 Q15 clk VDD GND VDD GND cmpoai_all_
-x17 A18 B18 Q18 clk VDD GND VDD GND cmpoai_all_
-x18 A17 B17 Q17 clk VDD GND VDD GND cmpoai_all_
 V3 B16 GND 1.5
 V4 B15 GND 1.4
 V6 B18 GND 1.7
@@ -91,6 +73,24 @@ V37 A17 GND pwl 0 1.6 12.5u 1.6 12.5u 1.61 22.5u 1.61 22.5u 1.62 32.5u 1.62 32.5
 V38 A18 GND pwl 0 1.7 12.5u 1.7 12.5u 1.71 22.5u 1.71 22.5u 1.72 32.5u 1.72 32.5u 1.73 42.5u 1.73
 + 42.5u 1.74 52.5u 1.74 52.5u 1.75 62.5u 1.75 62.5u 1.76 72.5u 1.76 72.5u 1.77 82.5u 1.77 82.5u 1.78 92.5u
 + 1.78 92.5u 1.79 102.5u 1.79 102.5u 1.8 112.5u 1.8
+x1 A1 B1 Q1 clk VDD GND VDD GND cmpoai_all__
+x2 A2 B2 Q2 clk VDD GND VDD GND cmpoai_all__
+x3 A3 B3 Q3 clk VDD GND VDD GND cmpoai_all__
+x4 A4 B4 Q4 clk VDD GND VDD GND cmpoai_all__
+x5 A5 B5 Q5 clk VDD GND VDD GND cmpoai_all__
+x6 A6 B6 Q6 clk VDD GND VDD GND cmpoai_all__
+x7 A7 B7 Q7 clk VDD GND VDD GND cmpoai_all__
+x8 A8 B8 Q8 clk VDD GND VDD GND cmpoai_all__
+x9 A9 B9 Q9 clk VDD GND VDD GND cmpoai_all__
+x10 A10 B10 Q10 clk VDD GND VDD GND cmpoai_all__
+x11 A11 B11 Q11 clk VDD GND VDD GND cmpoai_all__
+x12 A12 B12 Q12 clk VDD GND VDD GND cmpoai_all__
+x13 A13 B13 Q13 clk VDD GND VDD GND cmpoai_all__
+x14 A14 B14 Q14 clk VDD GND VDD GND cmpoai_all__
+x15 A15 B15 Q15 clk VDD GND VDD GND cmpoai_all__
+x16 A16 B16 Q16 clk VDD GND VDD GND cmpoai_all__
+x17 A17 B17 Q17 clk VDD GND VDD GND cmpoai_all__
+x18 A18 B18 Q18 clk VDD GND VDD GND cmpoai_all__
 **** begin user architecture code
 
 .include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
@@ -152,17 +152,17 @@ V38 A18 GND pwl 0 1.7 12.5u 1.7 12.5u 1.71 22.5u 1.71 22.5u 1.72 32.5u 1.72 32.5
 **** end user architecture code
 **.ends
 
-* expanding   symbol:  cmpoai_all_.sym # of pins=8
-* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all_.sym
-* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all_.sch
-.subckt cmpoai_all_  A B Q clk VPB VNB VPWR VGND
+* expanding   symbol:  cmpoai_all__.sym # of pins=8
+* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all__.sym
+* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/cmpoai_all__.sch
+.subckt cmpoai_all__  A B Q clk VPB VNB VPWR VGND
 x15 clk VGND VNB VPB VPWR clkb sky130_fd_sc_hd__inv_1
-x7 A A clkb VPWR net2 VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a221oi_1
-x8 B B clkb VPWR net1 VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a221oi_1
+x7 VPWR net2 clkb VPWR A VGND VNB VPB VPWR net1 sky130_fd_sc_hd__a221oi_1
+x8 net1 VPWR clkb VPWR B VGND VNB VPB VPWR net2 sky130_fd_sc_hd__a221oi_1
 x2 net3 VGND VNB VPB VPWR net6 sky130_fd_sc_hd__inv_1
 x3 net4 VGND VNB VPB VPWR net5 sky130_fd_sc_hd__inv_1
-x6 A A clk GND net4 VGND VNB VPB VPWR net3 sky130_fd_sc_hd__o221ai_1
-x9 B B clk GND net3 VGND VNB VPB VPWR net4 sky130_fd_sc_hd__o221ai_1
+x6 net4 GND clk GND A VGND VNB VPB VPWR net3 sky130_fd_sc_hd__o221ai_1
+x9 net3 GND clk GND B VGND VNB VPB VPWR net4 sky130_fd_sc_hd__o221ai_1
 x10 net5 net1 net7 VGND VNB VPB VPWR Q sky130_fd_sc_hd__nor3_1
 x11 Q net6 net2 VGND VNB VPB VPWR net7 sky130_fd_sc_hd__nor3_1
 .ends
@@ -178,6 +178,25 @@ vvss vss 0 0
 tran 0.5u 130u
 plot Q1 Q2+2 Q3+4 Q4+6 Q5+8 Q6+10 Q7+12 Q8+14 Q9+16 Q10+18 Q11+20 Q12+22 Q13+24 Q14+28 Q15+30 Q16+32
 + Q17+34 Q18+36
+meas tran x find t(Q1) when v(Q1)=1.8
+meas tran x find t(Q2) when v(Q2)=1.8
+meas tran x find t(Q3) when v(Q3)=1.8
+meas tran x find t(Q4) when v(Q4)=1.8
+meas tran x find t(Q5) when v(Q5)=1.8
+meas tran x find t(Q6) when v(Q6)=1.8
+meas tran x find t(Q7) when v(Q7)=1.8
+meas tran x find t(Q8) when v(Q8)=1.8
+meas tran x find t(Q9) when v(Q9)=1.8
+meas tran x find t(Q10) when v(Q10)=1.8
+meas tran x find t(Q11) when v(Q11)=1.8
+meas tran x find t(Q12) when v(Q12)=1.8
+meas tran x find t(Q13) when v(Q13)=1.8
+meas tran x find t(Q14) when v(Q14)=1.8
+meas tran x find t(Q15) when v(Q15)=1.8
+meas tran x find t(Q16) when v(Q16)=1.8
+meas tran x find t(Q17) when v(Q17)=1.8
+meas tran x find t(Q18) when v(Q18)=1.8
+
 .endc
 
 
