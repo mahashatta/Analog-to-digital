@@ -10,6 +10,7 @@ Simulation:
 Vref against VDD variations:
 
 at temp 25:
+
 ![image](https://user-images.githubusercontent.com/83517256/131255187-9e7bce35-7083-4fd9-bbc6-18db846f2663.png)
 
 at VDD= 3.2 V, Vref= 1.0201 V
@@ -23,6 +24,7 @@ at temp 20
 at VDD= 3.3V, Vref= 1.0364 V
 at temp 70
 at VDD= 3.3V, Vref=0.9298 V
+
 ![1 024_temp](https://user-images.githubusercontent.com/83517256/131255003-de402a11-21b9-4646-847f-b77468e6bae3.PNG)
 
 For Vref= 1.8 V: 
