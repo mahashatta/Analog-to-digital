@@ -1,13 +1,44 @@
-**.subckt srlatch S R Q QN CLK
-*.ipin S
-*.ipin R
-*.opin Q
-*.opin QN
-*.ipin CLK
-x5 S CLK SN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
-x1 R CLK RN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
-x2 RN Q QN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
-x3 SN QN Q VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+**.subckt bgr2
+XM2 net4 net3 vdd vdd sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM3 net3 net3 vdd vdd sky130_fd_pr__pfet_g5v0d10v5 L=1.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM4 net1 net3 vdd vdd sky130_fd_pr__pfet_g5v0d10v5 L=1 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM5 vg4 net2 net4 net4 sky130_fd_pr__pfet_g5v0d10v5 L=13 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM6 net2 net2 net3 net3 sky130_fd_pr__pfet_g5v0d10v5 L=1.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1 
+XM7 vg1 net2 net1 net1 sky130_fd_pr__pfet_g5v0d10v5 L=10 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM9 vbe1 vbe1 vbe1 GND sky130_fd_pr__pfet_g5v0d10v5 L=1 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM10 vbe0 vbe0 vbe0 GND sky130_fd_pr__pfet_g5v0d10v5 L=1 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM11 vbe2 vbe2 vbe2 GND sky130_fd_pr__pfet_g5v0d10v5 L=1 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+V1 vdd GND 3.3
+XM14 vg4 vg4 vbe2 GND sky130_fd_pr__nfet_g5v0d10v5 L=15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM8 vref vg1 vbe0 GND sky130_fd_pr__nfet_g5v0d10v5 L=20 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM13 net2 vg4 vref GND sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1 
+XM1 vg1 vg1 vbe1 GND sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
 **** begin user architecture code
 
 .include ~/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice
@@ -47,56 +78,23 @@ x3 SN QN Q VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
 
 **** end user architecture code
 **.ends
-
-* expanding   symbol:  sky130_tests/lvnand.sym # of pins=3
-* sym_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/sky130_tests/lvnand.sym
-* sch_path: /home/mahashatta/.xschem/xschem_library/xschem_sky130/sky130_tests/lvnand.sch
-.subckt lvnand  A B Y  VCCPIN  VSSPIN   WidthN=1 LenN=0.15 WidthP=1 LenP=0.15
-*.ipin A
-*.ipin B
-*.opin Y
-XM1 Y B S VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1 
-XM2 Y A VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1 
-XM3 Y B VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1 
-XM4 S A VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1 
-.ends
-
+.GLOBAL GND
 **** begin user architecture code
 
-* .option SCALE=1e-6
-.option method=gear seed=12
-.param L=0.15
-.param W=0.5
 
-vd d 0 0
-vg g 0 0
+*.temp 25
 .control
-dc vd 0 2 0.01 vg 0 2 0.2
-alterparam L=0.18
-alterparam W=1
-reset
-dc vd 0 2 0.01 vg 0 2 0.2
-alterparam L=0.3
-alterparam W=2
-reset
-dc vd 0 2 0.01 vg 0 2 0.2
-alterparam L=0.5
-alterparam W=3
-reset
-dc vd 0 2 0.01 vg 0 2 0.2
-
+*tran 1n 20u
+dc temp 0 100 0.1
+*dc v1 3.1 3.5 0.01
+*dc @M13[w] 10u 20u 0.5u
+plot vref vbe2 vbe0
+print vref vbe2
+meas tran x1 find v(vref) when v(vdd)=3.2
+meas tran x2 find v(vref) when v(vdd)=3.3
+meas tran x2_ find v(vbe2) when v(vdd)=3.3
+meas tran x3 find v(vref) when v(vdd)=3.4
 .endc
-
-
-
 
 
 **** end user architecture code
