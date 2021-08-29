@@ -1,41 +1,37 @@
 # Analog-to-digital
 
-# Nor Comparator 
-This is the nor comparator built and tested in clk frequency of 12.5 MHz 
-with an input signal of a ramp in the positive terminal of the comparator.
-The ramp's is increasing from 0 to 0.9 during  10 us
-
-The testbench
-
-![image](https://user-images.githubusercontent.com/83517256/116795395-df3c6d00-aad4-11eb-8ebf-924b1e10389f.png)
-
-The simulation result:
-
-![NOR Comparator_12 5Mega_0 9](https://user-images.githubusercontent.com/83517256/117760804-9730ef00-b226-11eb-9959-88096c7b2b9f.PNG)
-
 # BGR
 The BandGap Circuit was designed to support Voltage Reference of 1.024 V and 1.8 V
 
-For 1.024 V:
-![image](https://user-images.githubusercontent.com/83517256/116795395-df3c6d00-aad4-11eb-8ebf-924b1e10389f.png)
+For Vref= 1.024 V:
+
 
 Simulation:
 Vref against VDD variations:
 
-at temp 25
+at temp 25:
+![image](https://user-images.githubusercontent.com/83517256/131255187-9e7bce35-7083-4fd9-bbc6-18db846f2663.png)
+
 at VDD= 3.2 V, Vref= 1.0201 V
 at VDD= 3.3 V, Vref= 1.0249 V
 at VDD= 3.4 V, Vref= 1.0295 V
 
 Vref against Temperature:
+at temp 10
+at VDD= 3.3V, Vref= 1.0593 V
+at temp 20 
+at VDD= 3.3V, Vref= 1.0364 V
+at temp 70
+at VDD= 3.3V, Vref=0.9298 V
+![1 024_temp](https://user-images.githubusercontent.com/83517256/131255003-de402a11-21b9-4646-847f-b77468e6bae3.PNG)
 
-For 1.8 V:
-The BandGap Circuit was designed to support Voltage Reference of 1.8 V 
-
-![image](https://user-images.githubusercontent.com/83517256/116795395-df3c6d00-aad4-11eb-8ebf-924b1e10389f.png)
+For Vref= 1.8 V: 
 
 Simulation:
+at temp 25:
 Vref against VDD variations:
+![image](https://user-images.githubusercontent.com/83517256/131254930-18d84741-a479-4c45-9710-2664a0003de7.png)
+
 
 at temp 25
 at VDD= 3.2 V, Vref= 1.7563 V
@@ -43,5 +39,11 @@ at VDD= 3.3 V, Vref= 1.8085 V
 at VDD= 3.4 V, Vref= 1.8248 V
 
 Vref against Temperature:
+at temp 10
+at VDD= 3.3V, Vref= 1.650 V
+at temp 20
+at VDD= 3.3V, Vref= 1.7412 V
+at temp 70
+at VDD= 3.3V, Vref= 1.7412 V
 
-
+![1 8_temp_1](https://user-images.githubusercontent.com/83517256/131254975-378325a3-e3dc-4c4b-a475-1f6e7dd5867e.PNG)
