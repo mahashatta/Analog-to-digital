@@ -49,4 +49,7 @@ at temp 70
 at VDD= 3.3V, Vref= 1.7412 V
 
 ![1 8_temp_1](https://user-images.githubusercontent.com/83517256/131254975-378325a3-e3dc-4c4b-a475-1f6e7dd5867e.PNG)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4777bb7aea96be158d6fc22be4c468a553938008
